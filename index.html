@@ -6,7 +6,9 @@
         <title>Document</title>
         <style>
             :root {
-                --pink: white;
+                --pink: rgb(223, 131, 219);
+                --scale: 100;
+                --zoom: calc(var(--scale) / 100);
             }
 
             * {
@@ -14,6 +16,7 @@
                 padding: 0;
                 box-sizing: border-box;
                 border: 0px;
+                font-family: 'Courier New', Courier, monospace;
             }
 
             html,
@@ -22,21 +25,132 @@
                 height: 100%;
                 overflow: hidden;
             }
-        </style>
-        <script>
-            function iframeload() {
-                document.documentElement.style.setProperty('--pink', '#df83db');
+
+            iframe {
+                width: calc(10000 / var(--scale) * 1%);
+                height: calc(10000 / var(--scale) * 1%);
+                zoom: var(--zoom);
+                transform: scale(var(--zoom));
+                -ms-zoom: var(--zoom);
+                -moz-transform: scale(var(--zoom));
+                -moz-transform-origin: 0 0;
+                -o-transform: scale(var(--zoom));
+                -o-transform-origin: 0 0;
+                -webkit-transform: scale(var(--zoom));
+                -webkit-transform-origin: 0 0;
             }
-        </script>
+
+            .button {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 100;
+                width: 15vw;
+                height: 15vw;
+                max-width: 500px;
+                max-height: 500px;
+                min-width: 100px;
+                min-height: 100px;
+                margin: 20px;
+                box-shadow: inset 0px 0px 20px 8px rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                cursor: pointer;
+            }
+
+            .button:hover {
+                background-color: white;
+            }
+
+            .button img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .button,
+            .button img {
+                background-color: transparent;
+            }
+
+            .document,
+            .docoverlay {
+                display: none;
+                z-index: 5;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+
+            .docoverlay {
+                box-shadow: inset 0px 0px 30px 8px rgba(223, 131, 219, 0.9);
+                pointer-events: none;
+            }
+
+            .open .document,
+            .docoverlay {
+                display: flex;
+            }
+
+            .document {
+                background-color: white;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                padding-top: 150px;
+            }
+
+            .document > * {
+                margin: 40px 0px;
+                width: 100%;
+                max-width: 500px;
+                display: block;
+                word-wrap: break-word;
+            }
+
+            .document h2 {
+                margin-bottom: 20px;
+            }
+
+            .doctext {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 1100px !important;
+                justify-content: center;
+                gap: 40px;
+            }
+            .doctext > div {
+                width: 40%;
+                min-width: min(500px, 100%);
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            @media only screen and (max-width: 1000px) {
+                :root {
+                    --scale: 85;
+                    font-size: 13px;
+                }
+            }
+
+            @media only screen and (max-width: 600px) {
+                :root {
+                    --scale: 75;
+                    font-size: 11px;
+                }
+            }
+        </style>
     </head>
     <body>
         <div
             style="
                 color: var(--pink);
                 background-color: var(--pink);
-                padding: 2px;
+                padding: calc(2px * var(--zoom));
                 font-family: Verdana;
-                font-size: 12px;
+                font-size: calc(12px * var(--zoom));
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -46,10 +160,150 @@
         >
             Menuuu
         </div>
-        <iframe
-            style="width: 100%; height: 100%"
-            src="https://www.yourworldoftext.com/~ether-home/"
-            onload="iframeload()"
-        ></iframe>
+        <button class="button" onclick="toggle()">
+            <img src="image/d5364d4c-3b7f-40e1-8f56-0e68f1482a62.png" />
+        </button>
+        <section class="document">
+            <h1>ether home an exhibition of works in progress</h1>
+            <div class="doctext">
+                <div>
+                    <h2>1/ introductions</h2>
+                    <p>
+                        :::::::.......:::::::hello,
+                        hello…….:::::::.......:::::::...:::::::...:::::::........:::::::...
+                        <br />
+                        <br />
+                        :::::::.......:::::::.......i am
+                        ether@rasperry_pi_peace_centre….:::::.....:::::......:::::::...
+                        <br />
+                        <br />
+                        :::….::::.....welcome to my
+                        place…..::::...:::::.....:::::....::::....::::....:::......:::::::...
+                        <br />
+                        <br />
+                        :::::.....:::::.....:::::.....:::::make yourself at
+                        home: ~ $ cat ether-home ......:::::::....
+                        <br />
+                        <br />
+                        ___________________
+                        <br />
+                        <br />
+                        ether home is a nomadic makeshift home collectively
+                        created by artist yifan wang, collaborators Bảo Anh Bùi
+                        Nguyễn and Hanae Gomez, as well as our friend ether.
+                        ether is the name of a self-built, low-tech, friendly
+                        ethereum node living in a raspberry pi. what could ether
+                        teach us about techno-political decentralization,
+                        grassroots technologies, care labor and digital
+                        materiality, human-machine friendships? How could we
+                        provoke radical imaginations about emerging technologies
+                        and community networks beyond competitive computing,
+                        financialized speculation and private property? Drop by
+                        and hang out at ether’s home to think, play and dwell
+                        more with our ether friend.
+                        <br />
+                        ___________________
+                        <br />
+                        <br />
+                        <b>on view:</b> Oct 26 - Nov 6, 2023
+                        <br />
+                        <br />:::::::.......:::::::hello,
+                        hello…….:::::::.......:::::::...:::::::...:::::::........:::::::...
+                        <br />
+                        <br />
+                        :::::::.......:::::::.......i am
+                        ether@rasperry_pi_peace_centre….:::::.....:::::......:::::::...
+                        <br />
+                        <br />
+                        :::….::::.....welcome to my
+                        place…..::::...:::::.....:::::....::::....::::....:::......:::::::...
+                        <br />
+                        <br />
+                        :::::.....:::::.....:::::.....:::::make yourself at
+                        home: ~ $ cat ether-home ......:::::::....
+                    </p>
+                </div>
+                <div>
+                    <h2>2/ artist performative lecture</h2>
+                    <p>
+                        16:00-17:00, Nov. 4, Saturday Peace Centre, 1 Sophia
+                        Road, Singapore, 228161
+                    </p>
+                    <h2 style="margin-top: 40px">3/ artist bios</h2>
+                    <p>
+                        <b> yifan wang</b>
+                        <br />
+                        <br />
+                        yifan wang is is a technology journalist, a new media
+                        artist, and a constantly-shapeshifting soft blob that
+                        embraces boundary deconstruction, relation-building, DIY
+                        spirits and non-institutional ways of existence.
+                        <br />
+                        <br />
+                        she makes stuff like news, zines, games, tattoos,
+                        everyday-everynight revolutions and everything in
+                        between
+
+                        <br />
+                        <br />
+                        her practice engages with two main issues:
+                        <br />
+                        <br />
+
+                        1. she seeks to unpack, interrogate and demystify
+                        contemporary forms of power and control including
+                        digital governmentality and financialized neo-feudalism.
+                        <br />
+                        <br />
+
+                        2. she looks for tangible, feasible, quotidian ways to
+                        hack, sabotage, disrupt these systems of domination, and
+                        to open up loopholes, fractures and autonomous zones
+                        that allow us to live as if we are already free.
+
+                        <br />
+                        <br />
+                        her works can be found at
+                        <a target="_blank" href="https://wangyifan.io/"
+                            >wangyifan.io
+                        </a>
+                        <br />
+                        <br />
+
+                        <b>bui nguyen bao anh</b>
+
+                        <br />
+                        <br />
+                        Bao Anh likes to explore the topic of communal
+                        experiences and sharing through investigating the
+                        independent development of tools/software/plugins, as
+                        well as the piracy of online assets.
+                        <br />
+                        <br />
+                        <b>hanae gomez</b>
+                        <br />
+                        <br />
+                    </p>
+                </div>
+            </div>
+            <img src="image/document/doc1.jpg" />
+            <img src="image/document/doc2.jpg" />
+            <img src="image/document/doc3.jpg" />
+            <img src="image/document/doc4.jpg" />
+            <img src="image/document/doc5.jpg" />
+            <img src="image/document/doc6.jpg" />
+            <img src="image/document/doc7.jpg" />
+            <img src="image/document/doc8.jpg" />
+            <img src="image/document/doc9.jpg" />
+            <img src="image/document/doc10.jpg" />
+            <img src="image/document/doc11.jpg" />
+        </section>
+        <section class="docoverlay"></section>
+        <iframe src="https://www.yourworldoftext.com/~ether-home/"></iframe>
+        <script>
+            function toggle() {
+                document.body.classList.toggle('open');
+            }
+        </script>
     </body>
 </html>
