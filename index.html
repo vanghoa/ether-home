@@ -61,7 +61,7 @@
                 left: 50%;
                 top: 50%;
                 padding: 20px;
-                background-color: aqua;
+                background-color: rgb(255, 197, 103);
                 transform: translate(-50%, -50%);
                 box-shadow: inset 0px 0px 20px 8px rgba(255, 255, 255, 0.9);
                 border-radius: 20px;
@@ -85,8 +85,10 @@
                 cursor: pointer;
             }
 
-            .button:hover {
-                background-color: white;
+            @media (hover: hover) and (pointer: fine) {
+                .button:hover {
+                    background-color: white;
+                }
             }
 
             .button img {
@@ -207,8 +209,11 @@
                 2/ how did visiting ether's home make you feel differently?
                 <br />
                 <br />
-                3/ do artifacts have politics? what would you like to say to
-                ether before you leave its home?
+                3/ do artifacts have politics?
+                <br />
+                <br />
+                4/ what would you like to say to ether before you leave its
+                home?
             </div>
         </div>
         <button class="button" onclick="toggle()">
