@@ -40,6 +40,34 @@
                 -webkit-transform-origin: 0 0;
             }
 
+            .prompt {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 200;
+                padding: 20px;
+                background-color: rgba(255, 255, 255, 0.8);
+                cursor: pointer;
+            }
+
+            .prompt > div {
+                word-wrap: break-word;
+                position: relative;
+                max-width: 500px;
+                width: 100%;
+                left: 50%;
+                top: 50%;
+                padding: 20px;
+                background-color: aqua;
+                transform: translate(-50%, -50%);
+                box-shadow: inset 0px 0px 20px 8px rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                font-weight: bold;
+            }
+
             .button {
                 position: absolute;
                 left: 0;
@@ -81,7 +109,7 @@
             }
 
             .docoverlay {
-                box-shadow: inset 0px 0px 30px 8px rgba(223, 131, 219, 0.9);
+                box-shadow: inset 0px 0px 50px 8px rgba(223, 131, 219, 0.9);
                 pointer-events: none;
             }
 
@@ -142,6 +170,17 @@
                 }
             }
         </style>
+        <script>
+            function toggle() {
+                document.body.classList.toggle('open');
+            }
+
+            //document.querySelector('.prompt').onclick = close;
+
+            function closeprompt(e) {
+                e.remove();
+            }
+        </script>
     </head>
     <body>
         <div
@@ -160,11 +199,23 @@
         >
             Menuuu
         </div>
+        <div class="prompt" onClick="closeprompt(this)">
+            <div>
+                1/ what are your initial impressions of blockchain technologies?
+                <br />
+                <br />
+                2/ how did visiting ether's home make you feel differently?
+                <br />
+                <br />
+                3/ do artifacts have politics? what would you like to say to
+                ether before you leave its home?
+            </div>
+        </div>
         <button class="button" onclick="toggle()">
             <img src="image/d5364d4c-3b7f-40e1-8f56-0e68f1482a62.png" />
         </button>
         <section class="document">
-            <h1>ether home an exhibition of works in progress</h1>
+            <h1>/ ether home an exhibition of works in progress /</h1>
             <div class="doctext">
                 <div>
                     <h2>1/ introductions</h2>
@@ -231,7 +282,7 @@
                     </p>
                     <h2 style="margin-top: 40px">3/ artist bios</h2>
                     <p>
-                        <b> yifan wang</b>
+                        <b>- yifan wang</b>
                         <br />
                         <br />
                         yifan wang is is a technology journalist, a new media
@@ -243,7 +294,6 @@
                         she makes stuff like news, zines, games, tattoos,
                         everyday-everynight revolutions and everything in
                         between
-
                         <br />
                         <br />
                         her practice engages with two main issues:
@@ -255,12 +305,10 @@
                         digital governmentality and financialized neo-feudalism.
                         <br />
                         <br />
-
                         2. she looks for tangible, feasible, quotidian ways to
                         hack, sabotage, disrupt these systems of domination, and
                         to open up loopholes, fractures and autonomous zones
                         that allow us to live as if we are already free.
-
                         <br />
                         <br />
                         her works can be found at
@@ -269,18 +317,10 @@
                         </a>
                         <br />
                         <br />
-
-                        <b>bui nguyen bao anh</b>
-
+                        <b>- bui nguyen bao anh</b>
                         <br />
                         <br />
-                        Bao Anh likes to explore the topic of communal
-                        experiences and sharing through investigating the
-                        independent development of tools/software/plugins, as
-                        well as the piracy of online assets.
-                        <br />
-                        <br />
-                        <b>hanae gomez</b>
+                        <b>- hanae gomez</b>
                         <br />
                         <br />
                     </p>
@@ -300,10 +340,5 @@
         </section>
         <section class="docoverlay"></section>
         <iframe src="https://www.yourworldoftext.com/~ether-home/"></iframe>
-        <script>
-            function toggle() {
-                document.body.classList.toggle('open');
-            }
-        </script>
     </body>
 </html>
